@@ -1,0 +1,19 @@
+#!/bin/bash
+# 40 programming pdfs based on collections from stackoverflow
+# https://www.reddit.com/r/learnprogramming/comments/7zj64e/40_programming_pdfs/
+# This scripts download entire 40 programming pdfs 
+
+# alternative to download via http://book.goalkicker.com/all.zip
+
+URI="book.goalkicker.com"
+FOLDER="EXTRACTED_PDFS"
+DL_DIR="$URI/"
+PDF_DIR="$URI/$FOLDER/"
+echo "cd "
+cd 
+echo "wget -c --retry-connrefused --tries=0 --timeout=5 --convert-links --html-extension --mirror -r -l 0 http://$URI/"
+wget -c --retry-connrefused --tries=0 --timeout=5 --convert-links --html-extension --mirror -r -l 0 http://$URI/
+echo "mkdir -p $PDF_DIR"
+mkdir -p $PDF_DIR
+cd $DL_DIR
+cp -v `find . -name "*.pdf"` $FOLDER
